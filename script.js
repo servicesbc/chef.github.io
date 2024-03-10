@@ -133,6 +133,11 @@ function getInstructionsList(recipe) {
     return instructionsList;
 }
 
+window.onload = async function() {
+    displayAllRecipes();
+    updateTime(); 
+}
+
 function updateTime() {
     const currentTimeElement = document.getElementById('current-time');
     setInterval(() => {
@@ -141,11 +146,6 @@ function updateTime() {
         const minutes = now.getMinutes().toString().padStart(2, '0');
         currentTimeElement.textContent = `${hours}:${minutes}`;
     }, 1000);
-}
-
-window.onload = async function() {
-    displayAllRecipes();
-    updateTime(); 
 }
 
 document.getElementById('search-google').addEventListener('click', function() {
