@@ -146,7 +146,7 @@ function updateTime() {
 window.onload = async function() {
     displayAllRecipes();
     updateTime(); 
-};
+}
 
 document.getElementById('search-google').addEventListener('click', function() {
     const searchQuery = document.getElementById('google-search-query').value;
