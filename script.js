@@ -63,7 +63,7 @@ async function filterByLetter(letter) {
         } else {
             console.error('No meals found for letter:', letter);
             const recipeList = document.getElementById('recipe-list');
-            recipeList.innerHTML = ''; // Limpiar la lista si no hay recetas
+            recipeList.innerHTML = ''; 
             const notFoundItem = document.createElement('li');
             notFoundItem.classList.add('not-found');
             notFoundItem.textContent = 'Not Found';
@@ -74,7 +74,6 @@ async function filterByLetter(letter) {
     }
 }
 
-// Función para abrir el modal con los detalles de la receta
 async function openModal(recipeId) {
     const modal = document.getElementById('recipe-modal');
     const modalContent = document.getElementById('recipe-content');
@@ -113,7 +112,7 @@ function closeModal() {
 
 function getIngredientsList(recipe) {
     let ingredientsList = '';
-    for (let i = 1; i <= 20; i++) { // Máximo 20 ingredientes
+    for (let i = 1; i <= 20; i++) { 
         const ingredient = recipe['strIngredient' + i];
         const measure = recipe['strMeasure' + i];
         if (ingredient && ingredient.trim() !== '') {
@@ -149,4 +148,13 @@ window.onload = async function() {
     updateTime(); 
 };
 
+document.getElementById('search-google').addEventListener('click', function() {
+    const searchQuery = document.getElementById('google-search-query').value;
+    if (searchQuery.trim() !== '') {
+        const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+        window.open(googleSearchUrl, '_blank');
+    } else {
+        alert('Please enter a search query.');
+    }
+});
 
